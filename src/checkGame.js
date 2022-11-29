@@ -9,7 +9,7 @@ export function checkGame (hasWon, hit, word) {
   const canvas = document.getElementById('canvas')
 
   if (hasWon) {
-    window.alert('!Has ganado!')
+    window.alert('¡Has ganado!')
     disableButtons()
   } else {
     if (!hit) {
@@ -17,7 +17,7 @@ export function checkGame (hasWon, hit, word) {
       drawMan(canvas, count)
 
       if (count > 5) {
-        window.alert(`!Has perdido! La palabra era ${word}`)
+        window.alert(`¡Has perdido! La palabra era ${word}`)
 
         const wordDiv = document.getElementById('word')
         wordDiv.textContent = word.split('').join(' ')
