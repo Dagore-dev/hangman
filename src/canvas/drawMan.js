@@ -1,7 +1,8 @@
 import { canvasCreator } from './canvasCreator.js'
 
-export function drawMan (count) {
-  const { head, body, leftArm, rightArm, leftLeg, rightLeg } = canvasCreator()
+export function drawMan (canvas, count) {
+  const { head, body, leftArm, rightArm, leftLeg, rightLeg } = canvasCreator(canvas)
+
   switch (count) {
     case 1:
       head()

@@ -1,6 +1,8 @@
-export function canvasCreator () {
-  const canvas = document.createElement('canvas')
-
+/**
+ *
+ * @param {HTMLCanvasElement} canvas
+ */
+export function canvasCreator (canvas) {
   const context = canvas.getContext('2d')
   context.beginPath()
   context.strokeStyle = '#000'

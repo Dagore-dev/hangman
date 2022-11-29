@@ -22,7 +22,10 @@ export function createButtons (word) {
     fragment.appendChild(btn)
   }
 
-  return fragment
+  const div = document.createElement('div')
+  div.id = 'keyboard'
+  div.appendChild(fragment)
+  return div
 }
 
 /**
@@ -34,6 +37,7 @@ function createBtn (char, word) {
   btn.textContent = char
 
   btn.addEventListener('click', e => {
+    let hit = false
     const wordDiv = document.getElementById('word')
     const charArray = wordDiv.textContent.trim().split(' ')
 
@@ -42,16 +46,17 @@ function createBtn (char, word) {
 
       if (currentChar === char) {
         charArray[i] = char
+        hit = true
       }
     }
 
     const updatedContent = charArray.join(' ')
-    console.log(updatedContent)
     wordDiv.textContent = updatedContent
 
     btn.disabled = true
 
-    checkGame()
+    const hasWon = charArray.every(char => char !== '_')
+    checkGame(hasWon, hit, word)
   })
 
   return btn
