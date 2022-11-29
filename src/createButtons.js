@@ -7,7 +7,7 @@ import { checkGame } from './checkGame.js'
 export function createButtons (word) {
   const fragment = document.createDocumentFragment()
 
-  for (let i = 65; i < 91; i++) {
+  for (let i = 65; i < 79; i++) {
     const char = String.fromCharCode(i)
     const btn = createBtn(char, word)
     fragment.appendChild(btn)
@@ -15,6 +15,12 @@ export function createButtons (word) {
 
   const btn = createBtn('Ñ', word)
   fragment.appendChild(btn)
+
+  for (let i = 79; i < 91; i++) {
+    const char = String.fromCharCode(i)
+    const btn = createBtn(char, word)
+    fragment.appendChild(btn)
+  }
 
   return fragment
 }
@@ -40,7 +46,10 @@ function createBtn (char, word) {
     }
 
     const updatedContent = charArray.join(' ')
+    console.log(updatedContent)
     wordDiv.textContent = updatedContent
+
+    btn.disabled = true
 
     checkGame()
   })

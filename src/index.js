@@ -1,5 +1,6 @@
 import { getRandomSpanishWord } from './services/getRandomSpanishWord.js'
 import { createButtons } from './createButtons.js'
+import { canvasCreator } from './canvas/canvasCreator.js'
 
 window.addEventListener('DOMContentLoaded', main)
 
@@ -11,6 +12,10 @@ async function main () {
   if (randomSpanishWord.ok) {
     root.textContent = ''
     const word = randomSpanishWord.word.palabra_sin_tilde.toUpperCase()
+
+    const { canvas, initialDrawing } = canvasCreator()
+    root.appendChild(canvas)
+    initialDrawing()
 
     const content = getUnderscores(word.length)
     const wordDiv = document.createElement('div')
