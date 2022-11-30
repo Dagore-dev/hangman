@@ -54,6 +54,13 @@ function createBtn (char, word) {
     wordDiv.textContent = updatedContent
 
     btn.disabled = true
+    btn.style.color = 'white'
+
+    if (hit) {
+      btn.style.backgroundColor = 'green'
+    } else {
+      btn.style.backgroundColor = 'red'
+    }
 
     const hasWon = charArray.every(char => char !== '_')
     checkGame(hasWon, hit, word)
