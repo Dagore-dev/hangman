@@ -1,4 +1,5 @@
 import { drawMan } from './canvas/drawMan.js'
+import { createModal } from './utils/createModal.js'
 
 /**
  * @param {boolean} hasWon
@@ -7,22 +8,28 @@ import { drawMan } from './canvas/drawMan.js'
  */
 export function checkGame (hasWon, hit, word) {
   const canvas = document.getElementById('canvas')
+  const root = document.getElementById('root')
 
   if (hasWon) {
-    window.alert('¡Has ganado!')
     disableButtons()
+
+    const dialog = createModal('Has ganado')
+    root.appendChild(dialog)
+    dialog.open = true
   } else {
     if (!hit) {
       const count = ++canvas.dataset.count
       drawMan(canvas, count)
 
       if (count > 5) {
-        window.alert(`¡Has perdido! La palabra era ${word}`)
+        disableButtons()
+
+        const dialog = createModal(`¡Has perdido! La palabra era ${word}`)
+        root.appendChild(dialog)
+        dialog.open = true
 
         const wordDiv = document.getElementById('word')
         wordDiv.textContent = word.split('').join(' ')
-
-        disableButtons()
       }
     }
   }
