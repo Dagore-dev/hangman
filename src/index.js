@@ -13,7 +13,7 @@ export async function main () {
   if (randomSpanishWord.ok) {
     root.textContent = ''
 
-    const word = randomSpanishWord.word.palabra_sin_tilde.toUpperCase()
+    const word = randomSpanishWord.word.toUpperCase()
 
     // Setting canvas
     const canvas = document.createElement('canvas')
